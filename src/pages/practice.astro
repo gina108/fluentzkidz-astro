@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Practice | Fluentz Kidz"
+  description="Interactive Spanish practice activities from Fluentz Kidz."
+  path="/practice"
+>
+  <main class="practice-shell">
+    <iframe
+      class="practice-frame"
+      src="https://view.genially.com/66760db007978400143e0273"
+      title="Fluentz Kidz Practice"
+      allow="fullscreen; autoplay"
+      allowfullscreen
+      loading="lazy"
+    ></iframe>
+  </main>
+
+  <style>
+    .practice-shell {
+      width: min(100%, 1600px);
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    .practice-frame {
+      display: block;
+      width: 100%;
+      min-height: 100vh;
+      border: 0;
+      background: transparent;
+    }
+
+  </style>
+</BaseLayout>

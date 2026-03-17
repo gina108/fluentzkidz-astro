@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Arturo | Fluentz Kidz"
+  description="Interactive Fluentz Kidz activity."
+  path="/arturo"
+>
+  <main class="embed-shell">
+    <iframe
+      class="embed-frame"
+      src="https://view.genially.com/69a8f57d9604433e04305849"
+      title="Arturo Activity"
+      allow="fullscreen; autoplay"
+      allowfullscreen
+      loading="lazy"
+    ></iframe>
+  </main>
+
+  <style>
+    .embed-shell {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .embed-frame {
+      display: block;
+      width: 100%;
+      min-height: 100vh;
+      border: 0;
+      background: transparent;
+    }
+  </style>
+</BaseLayout>

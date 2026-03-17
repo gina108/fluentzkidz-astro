@@ -1,0 +1,729 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+
+const plans = [
+  {
+    name: "One Class Per Week",
+    price: "$72",
+    detail: "billed every 4 weeks",
+    points: ["$18 per class", "25 minute classes", "Cancel anytime"]
+  },
+  {
+    name: "Two Classes Per Week",
+    price: "$120",
+    detail: "billed every 4 weeks",
+    points: ["$15.00 per class", "Native-speaker instruction", "Best value for momentum"]
+  },
+  {
+    name: "Three Classes Per Week",
+    price: "$180",
+    detail: "billed every 4 weeks",
+    points: ["$15.00 per class", "Extra speaking practice", "Ideal for fast progress"]
+  }
+];
+
+const highlights = [
+  "Interactive classes built for kids",
+  "Confidence-first speaking practice",
+  "First two classes free",
+  "Flexible plans with no lock-in",
+  "Cancel anytime",
+  "Flexible weekly plans",
+  "Try before you commit"
+];
+
+const approach = [
+  {
+    title: "Speak early",
+    text: "Children start using Spanish in context instead of memorizing isolated words."
+  },
+  {
+    title: "Learn with a native speaker",
+    text: "Pronunciation, rhythm, and natural conversation are built into every class."
+  },
+  {
+    title: "Keep it playful",
+    text: "Lessons use movement, repetition, and real interaction to hold attention."
+  }
+];
+
+const outcomes = [
+  "Short live sessions that fit after-school routines",
+  "Native-speaker guidance for natural pronunciation",
+  "Consistent weekly rhythm without long contracts",
+  "A low-pressure trial with the first two classes free"
+];
+
+const steps = [
+  {
+    label: "1. Reach out",
+    text: "Tell us your child’s age, experience level, and the days that usually work best."
+  },
+  {
+    label: "2. Try two classes",
+    text: "Start with two free sessions so your family can evaluate the fit before committing."
+  },
+  {
+    label: "3. Choose a plan",
+    text: "Pick the weekly rhythm that keeps progress moving without overloading your schedule."
+  }
+];
+---
+
+<BaseLayout
+  title="Fluentz Kidz | Spanish Classes For Kids"
+  description="Online Spanish classes for kids with native speakers, flexible plans, and the first two classes free."
+  path="/"
+>
+  <SiteHeader currentPath="/" />
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="pill">Online Spanish classes made for kids</span>
+          <h1>Help your child speak Spanish with confidence.</h1>
+          <p>
+            Fluentz Kidz offers live Spanish lessons that feel bright, interactive, and easy to
+            stick with. Kids learn with native speakers, practice in every session, and build real
+            speaking confidence through playful repetition and conversation.
+          </p>
+          <div class="button-row">
+            <a class="button primary hero-cta" href="/contact">
+              <img class="button-gecko" src="/peekinggecko1.png" alt="" aria-hidden="true" />
+              <span>Start With 2 Free Classes</span>
+            </a>
+            <a class="button secondary" href="/pricing">See Pricing</a>
+          </div>
+          <ul class="hero-points">
+            {highlights.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+
+        <div class="hero-visual card">
+          <div class="hero-badge">
+            <strong>25 min</strong>
+            <span>playful lessons that fit real family schedules</span>
+          </div>
+          <div class="hero-photo-wrap">
+            <img class="hero-photo" src="/fluentzmarkus.jpg" alt="Child learning Spanish with Fluentz Kidz" />
+          </div>
+          <img class="corner-gecko" src="/climbinggecko1.png" alt="" aria-hidden="true" />
+          <div class="hero-note hero-note-top">
+            <strong>Native-speaker led</strong>
+            <span>Encouraging instruction kids can actually follow.</span>
+          </div>
+          <div class="hero-note hero-note-bottom">
+            <strong>First 2 classes free</strong>
+            <span>Try the program before choosing a weekly plan.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section" id="about">
+      <div class="container about-grid">
+        <div>
+          <span class="pill">Why families choose Fluentz Kidz</span>
+          <h2 class="section-title">Language learning that feels alive, not academic.</h2>
+        </div>
+        <div class="section-copy">
+          <p>
+            The original Fluentz Kidz site emphasizes interactive lessons, confidence in
+            communication, and real-life speaking practice. This version leans further into that
+            child-focused identity with brighter color, friendlier language, and clearer benefits
+            for parents.
+          </p>
+          <p>
+            Whether your child is just starting or refining existing skills, the classes are
+            structured to make speaking Spanish feel natural and approachable.
+          </p>
+        </div>
+      </div>
+
+      <div class="container approach-grid">
+        {approach.map((item) => (
+          <article class="card approach-card">
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="outcomes-section">
+      <div class="container outcomes-grid">
+        <div>
+          <span class="pill">What families are really buying</span>
+          <h2 class="section-title">A routine that makes Spanish part of everyday life.</h2>
+        </div>
+        <div class="outcomes-stack">
+          <div class="card outcomes-card">
+            <ul>
+              {outcomes.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+          <div class="card outcomes-photo-card">
+            <img src="/fluentzmax.jpg" alt="Happy child engaged in Fluentz Kidz learning" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="plans-section" id="plans">
+      <div class="container plans-header">
+        <div>
+          <span class="pill">Simple pricing</span>
+          <h2 class="section-title">Choose the pace that works for your family.</h2>
+        </div>
+        <p class="section-copy">
+          Pricing is based on the current site and keeps the same no-pressure structure while making
+          comparisons easier.
+        </p>
+      </div>
+
+      <div class="container plans-grid">
+        {plans.map((plan, index) => (
+          <article class={`card plan-card ${index === 1 ? "featured" : ""}`}>
+            {index === 1 && <span class="plan-tag">Most Popular</span>}
+            <h3>{plan.name}</h3>
+            <div class="price-row">
+              <strong>{plan.price}</strong>
+              <span>{plan.detail}</span>
+            </div>
+            <ul>
+              {plan.points.map((point) => <li>{point}</li>)}
+            </ul>
+            <a class={`button ${index === 1 ? "primary" : "secondary"}`} href="/contact">
+              Book Free Classes
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="process-section">
+      <div class="container process-header">
+        <div>
+          <span class="pill">How it works</span>
+          <h2 class="section-title">A simple enrollment flow for busy parents.</h2>
+        </div>
+      </div>
+      <div class="container process-grid">
+        {steps.map((step) => (
+          <article class="card process-card">
+            <strong>{step.label}</strong>
+            <p>{step.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="quote-section">
+      <div class="container quote card">
+        <p>
+          “Language is best taught when it is being used to transmit messages, not when it is
+          explicitly taught for conscious learning.”
+        </p>
+        <span>Stephen D. Krashen</span>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="container contact-grid">
+        <div>
+          <span class="pill">Contact</span>
+          <h2 class="section-title">Book your child’s free classes.</h2>
+          <p class="section-copy">
+            The current WordPress site asks families to reach out for scheduling. This keeps that
+            funnel intact while cleaning up the presentation.
+          </p>
+          <div class="contact-list">
+            <a href="mailto:info@fluentzkidz.com">info@fluentzkidz.com</a>
+            <a href="tel:+17202713562">(720) 271-3562</a>
+            <p>2130 N Gould St, Sheridan, WY 82801, United States</p>
+          </div>
+        </div>
+
+        <form class="card contact-card" action="/api/contact" method="POST">
+          <label>
+            Name
+            <input type="text" name="name" autocomplete="name" placeholder="Parent or guardian name" required />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" autocomplete="email" placeholder="you@example.com" required />
+          </label>
+          <label>
+            Message
+            <textarea
+              name="message"
+              rows="5"
+              placeholder="Tell us your child's age, experience level, and preferred schedule."
+              required
+            ></textarea>
+          </label>
+          <button class="button primary" type="submit">Request Free Classes</button>
+          <small>Submissions post to the Cloudflare contact endpoint.</small>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+
+  <style>
+    :global(body) {
+      background:
+        radial-gradient(circle at top left, rgba(112, 49, 146, 0.34), transparent 28%),
+        radial-gradient(circle at top right, rgba(120, 221, 9, 0.2), transparent 26%),
+        linear-gradient(180deg, #0d0f1f 0%, #14162c 42%, #101322 100%);
+    }
+
+    :global(.pill) {
+      border-color: rgba(112, 49, 146, 0.34);
+      background: rgba(24, 28, 52, 0.92);
+      color: #d9a6ff;
+      box-shadow: inset 0 0 0 1px rgba(252, 146, 8, 0.08);
+    }
+
+    :global(.button.primary) {
+      background: linear-gradient(135deg, #703192 0%, #fc9208 100%);
+      box-shadow: 0 18px 36px rgba(112, 49, 146, 0.34);
+    }
+
+    :global(.button.secondary) {
+      border-color: rgba(112, 49, 146, 0.32);
+      background: rgba(24, 28, 52, 0.88);
+      color: #e6c7ff;
+    }
+
+    :global(.card) {
+      border-color: rgba(112, 49, 146, 0.18);
+      background: rgba(20, 23, 42, 0.88);
+    }
+
+    .hero,
+    .about-section,
+    .outcomes-section,
+    .plans-section,
+    .process-section,
+    .contact-section {
+      padding: 4rem 0;
+      position: relative;
+    }
+
+    .quote-section {
+      padding: 0 0 4rem;
+    }
+
+    .hero-grid,
+    .about-grid,
+    .outcomes-grid,
+    .plans-header,
+    .process-header,
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .hero-copy h1 {
+      margin: 1rem 0;
+      font-family: "Fredoka", sans-serif;
+      font-size: clamp(3rem, 7vw, 5.2rem);
+      line-height: 0.92;
+      max-width: 11ch;
+      color: #e6c7ff;
+    }
+
+    .hero-copy p,
+    .section-copy,
+    .approach-card p,
+    .plan-card ul,
+    .quote span,
+    .contact-list,
+    .contact-card small,
+    .process-card p,
+    .hero-badge span,
+    .hero-note span {
+      color: #c0bbdb;
+      line-height: 1.8;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .hero-cta {
+      position: relative;
+      overflow: visible;
+    }
+
+    .hero-cta span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .button-gecko {
+      position: absolute;
+      top: -1.5rem;
+      right: -0.35rem;
+      width: 3.6rem;
+      height: auto;
+      object-fit: contain;
+      pointer-events: none;
+      filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.24));
+    }
+
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.85rem 1rem;
+      padding: 1.5rem 0 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .hero-points li {
+      position: relative;
+      padding-left: 1.4rem;
+      font-weight: 700;
+      color: #e6c7ff;
+    }
+
+    .hero-points li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55rem;
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #78dd09, #fc9208);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 34rem;
+      padding: 1.5rem;
+      overflow: visible;
+      border-color: transparent;
+      background:
+        radial-gradient(circle at top right, rgba(252, 146, 8, 0.3), transparent 26%),
+        radial-gradient(circle at bottom left, rgba(120, 221, 9, 0.22), transparent 30%),
+        radial-gradient(circle at center, rgba(112, 49, 146, 0.22), transparent 42%),
+        linear-gradient(180deg, rgba(22, 25, 46, 0.96), rgba(27, 30, 56, 0.94));
+    }
+
+    .hero-badge,
+    .hero-note {
+      background: rgba(17, 20, 38, 0.96);
+      border: 1px solid rgba(112, 49, 146, 0.18);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      max-width: 14rem;
+      padding: 1rem 1.1rem;
+      border-radius: 1.25rem;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
+    }
+
+    .hero-badge strong,
+    .hero-note strong,
+    .approach-card h3,
+    .plan-card h3,
+    .process-card strong,
+    .price-row strong,
+    .quote p {
+      color: #e6c7ff;
+    }
+
+    .hero-badge strong,
+    .price-row strong,
+    .quote p {
+      font-family: "Fredoka", sans-serif;
+    }
+
+    .hero-badge strong {
+      font-size: 1.8rem;
+    }
+
+    .hero-photo-wrap {
+      position: absolute;
+      inset: 6.2rem 2rem 6.2rem 2rem;
+      border-radius: 1.8rem;
+      overflow: hidden;
+      border: 3px solid rgba(112, 49, 146, 0.35);
+      box-shadow: 0 26px 44px rgba(0, 0, 0, 0.28);
+      z-index: 1;
+    }
+
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .corner-gecko {
+      position: absolute;
+      top: -1.2rem;
+      left: -4rem;
+      width: 7.5rem;
+      height: auto;
+      object-fit: contain;
+      border-radius: 1.1rem;
+      transform: rotate(-8deg);
+      filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.28));
+      z-index: 3;
+      mix-blend-mode: screen;
+    }
+
+    .hero-note {
+      position: absolute;
+      display: grid;
+      gap: 0.3rem;
+      max-width: 14rem;
+      padding: 1rem 1.1rem;
+      border-radius: 1.25rem;
+      box-shadow: 0 20px 36px rgba(0, 0, 0, 0.24);
+      z-index: 2;
+    }
+
+    .hero-note strong {
+      font-family: "Fredoka", sans-serif;
+      font-size: 1.05rem;
+    }
+
+    .hero-note-top {
+      top: 1.5rem;
+      right: 1.5rem;
+    }
+
+    .hero-note-bottom {
+      right: 1.5rem;
+      bottom: 1.5rem;
+    }
+
+    .plan-tag {
+      background: rgba(112, 49, 146, 0.22);
+      color: #e6c7ff;
+    }
+
+    .approach-grid,
+    .plans-grid,
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .outcomes-stack {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .approach-card,
+    .outcomes-card,
+    .outcomes-photo-card,
+    .plan-card,
+    .process-card,
+    .quote,
+    .contact-card {
+      padding: 1.5rem;
+    }
+
+    .approach-card:nth-child(1) {
+      background: linear-gradient(180deg, rgba(112, 49, 146, 0.2), rgba(20, 23, 42, 0.9));
+    }
+
+    .approach-card:nth-child(2) {
+      background: linear-gradient(180deg, rgba(120, 221, 9, 0.16), rgba(20, 23, 42, 0.9));
+    }
+
+    .approach-card:nth-child(3) {
+      background: linear-gradient(180deg, rgba(252, 146, 8, 0.18), rgba(20, 23, 42, 0.9));
+    }
+
+    .outcomes-card ul {
+      margin: 0;
+      padding-left: 1.25rem;
+      color: #c0bbdb;
+      line-height: 1.9;
+    }
+
+    .outcomes-photo-card {
+      overflow: hidden;
+      min-height: 18rem;
+      padding: 0;
+    }
+
+    .outcomes-photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .plan-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .plan-card.featured {
+      background:
+        linear-gradient(180deg, rgba(112, 49, 146, 0.18), rgba(20, 23, 42, 0.88)),
+        rgba(20, 23, 42, 0.92);
+      transform: translateY(-0.35rem);
+    }
+
+    .plan-tag {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .price-row strong {
+      display: block;
+      font-size: 3rem;
+      line-height: 1;
+    }
+
+    .price-row span {
+      color: #c0bbdb;
+    }
+
+    .plan-card ul {
+      padding-left: 1.25rem;
+      margin: 0;
+      flex: 1;
+    }
+
+    .quote {
+      text-align: center;
+      max-width: 52rem;
+      margin: 0 auto;
+      background:
+        linear-gradient(135deg, rgba(112, 49, 146, 0.12), rgba(252, 146, 8, 0.1)),
+        rgba(20, 23, 42, 0.92);
+    }
+
+    .quote p {
+      margin: 0 0 1rem;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      line-height: 1.2;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 0.85rem;
+      margin-top: 1.5rem;
+      font-weight: 700;
+    }
+
+    .contact-card {
+      display: grid;
+      gap: 1rem;
+      background:
+        linear-gradient(180deg, rgba(120, 221, 9, 0.12), rgba(20, 23, 42, 0.92)),
+        rgba(20, 23, 42, 0.92);
+    }
+
+    .contact-card label {
+      display: grid;
+      gap: 0.45rem;
+      font-weight: 700;
+    }
+
+    .contact-card input,
+    .contact-card textarea {
+      width: 100%;
+      padding: 0.95rem 1rem;
+      border-radius: 1rem;
+      border: 1px solid rgba(112, 49, 146, 0.24);
+      background: rgba(11, 13, 26, 0.92);
+      font: inherit;
+      color: inherit;
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .about-grid,
+      .outcomes-grid,
+      .plans-header,
+      .contact-grid,
+      .approach-grid,
+      .process-grid,
+      .plans-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 28rem;
+      }
+
+      .hero-photo-wrap {
+        inset: 5.8rem 1.5rem 5.8rem 1.5rem;
+      }
+
+      .corner-gecko {
+        width: 6.2rem;
+        top: -0.8rem;
+        left: -2.8rem;
+      }
+
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        padding-top: 2rem;
+      }
+
+      .hero-points {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 24rem;
+      }
+
+      .hero-badge,
+      .hero-note {
+        max-width: 12rem;
+        padding: 0.85rem 0.95rem;
+      }
+
+      .hero-photo-wrap {
+        inset: 5.25rem 1rem 5.25rem 1rem;
+      }
+
+      .corner-gecko {
+        width: 5.2rem;
+        top: -0.5rem;
+        left: -2.2rem;
+      }
+
+      .button-gecko {
+        width: 3.1rem;
+        top: -1.25rem;
+        right: -0.15rem;
+      }
+    }
+  </style>
+</BaseLayout>

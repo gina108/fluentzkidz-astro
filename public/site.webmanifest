@@ -1,0 +1,22 @@
+{
+  "name": "Fluentz Kidz",
+  "short_name": "Fluentz Kidz",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f1020",
+  "theme_color": "#703192",
+  "icons": [
+    {
+      "src": "/logo1_192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo1_512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,230 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+
+const status = Astro.url.searchParams.get("status");
+const notice =
+  status === "success"
+    ? {
+        tone: "success",
+        title: "Request received",
+        text: "Your message was sent. We will follow up with a scheduling link within 24 hours."
+      }
+    : status === "error"
+      ? {
+          tone: "error",
+          title: "Submission failed",
+          text: "The form could not be sent right now. Please email info@fluentzkidz.com directly."
+        }
+      : null;
+
+const faqs = [
+  {
+    title: "What should parents include in the message?",
+    text: "Your child’s age, whether they have studied Spanish before, and the days or times that usually work."
+  },
+  {
+    title: "How quickly should someone respond?",
+    text: "The page promise is a scheduling link within 24 hours, so the form is written to support that expectation."
+  }
+];
+---
+
+<BaseLayout
+  title="Contact | Fluentz Kidz"
+  description="Contact Fluentz Kidz to request free classes or ask questions about Spanish lessons."
+  path="/contact"
+>
+  <SiteHeader currentPath="/contact" />
+  <main>
+    <section class="page-hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="pill">Contact</span>
+          <h1 class="section-title">Request a scheduling link.</h1>
+        </div>
+        <p class="section-copy">
+          The live WordPress contact page asks families to fill out a form or call directly. This
+          rebuild keeps that flow, removes the duplicated sections, and gives the page a cleaner
+          structure.
+        </p>
+      </div>
+    </section>
+
+    <section class="contact-body">
+      <div class="container contact-grid">
+        <form class="card contact-card" action="/api/contact" method="POST">
+          {notice && (
+            <div class={`notice ${notice.tone}`} role="status">
+              <strong>{notice.title}</strong>
+              <p>{notice.text}</p>
+            </div>
+          )}
+          <label>
+            Name
+            <input type="text" name="name" autocomplete="name" placeholder="Parent or guardian name" required />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" autocomplete="email" placeholder="you@example.com" required />
+          </label>
+          <label>
+            Message
+            <textarea
+              name="message"
+              rows="6"
+              placeholder="Tell us your child's age, experience level, and preferred schedule."
+              required
+            ></textarea>
+          </label>
+          <button class="button primary" type="submit">Request Free Classes</button>
+          <small>This form is ready for Cloudflare Pages Functions with Resend.</small>
+        </form>
+
+        <aside class="card info-card">
+          <h2>Quick contact info</h2>
+          <div class="info-list">
+            <p>Regina Cunningham</p>
+            <p>2130 N Gould St, Sheridan, WY 82801, United States</p>
+            <a href="mailto:info@fluentzkidz.com">info@fluentzkidz.com</a>
+            <a href="tel:+17202713562">(720) 271-3562</a>
+          </div>
+          <div class="note">
+            <strong>First two classes free</strong>
+            <p>Use the form to start the process and receive a scheduling link.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="faq">
+      <div class="container faq-grid">
+        {faqs.map((item) => (
+          <article class="card faq-card">
+            <h2>{item.title}</h2>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+
+  <style>
+    .page-hero,
+    .contact-body,
+    .faq {
+      padding: 4rem 0;
+    }
+
+    .hero-grid,
+    .contact-grid,
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .contact-card,
+    .info-card,
+    .faq-card {
+      padding: 1.5rem;
+    }
+
+    .contact-card {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .contact-card label {
+      display: grid;
+      gap: 0.45rem;
+      font-weight: 700;
+    }
+
+    .contact-card input,
+    .contact-card textarea {
+      width: 100%;
+      padding: 0.95rem 1rem;
+      border-radius: 1rem;
+      border: 1px solid rgba(174, 164, 255, 0.12);
+      background: rgba(11, 13, 26, 0.92);
+      font: inherit;
+      color: inherit;
+    }
+
+    .contact-card small,
+    .info-list,
+    .note p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .info-card h2 {
+      margin-top: 0;
+      font-family: "Fredoka", sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 0.75rem;
+      font-weight: 700;
+    }
+
+    .notice {
+      padding: 1rem;
+      border-radius: 1rem;
+      border: 1px solid transparent;
+    }
+
+    .notice p {
+      margin: 0.35rem 0 0;
+    }
+
+    .notice.success {
+      background: rgba(6, 182, 169, 0.12);
+      border-color: rgba(6, 182, 169, 0.25);
+    }
+
+    .notice.error {
+      background: rgba(223, 95, 64, 0.12);
+      border-color: rgba(223, 95, 64, 0.24);
+    }
+
+    .note {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      border-radius: 1rem;
+      background: rgba(255, 209, 102, 0.12);
+    }
+
+    .note strong {
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .faq-card h2 {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      font-size: 1.3rem;
+    }
+
+    .faq-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .contact-grid,
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</BaseLayout>

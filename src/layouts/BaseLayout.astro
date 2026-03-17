@@ -1,0 +1,173 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  path?: string;
+}
+
+const {
+  title,
+  description = "Spanish classes for kids with native speakers, flexible plans, and a confidence-first approach.",
+  path = "/"
+} = Astro.props;
+
+const canonicalUrl = new URL(path, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta name="theme-color" content="#703192" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Fluentz Kidz" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" href="/logo1_192x192.png" sizes="192x192" />
+    <link rel="icon" href="/logo1_512x512.png" sizes="512x512" />
+    <link rel="apple-touch-icon" href="/logo1_192x192.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style is:global>
+      :root {
+        --bg: #0f1020;
+        --surface: rgba(21, 24, 44, 0.82);
+        --surface-strong: #171a31;
+        --ink: #f4f1ff;
+        --muted: #b7b2d4;
+        --line: rgba(112, 49, 146, 0.28);
+        --brand: #fc9208;
+        --brand-deep: #e67f00;
+        --accent: #78dd09;
+        --accent-soft: rgba(120, 221, 9, 0.14);
+        --highlight: #ffd166;
+        --shadow: 0 24px 60px rgba(0, 0, 0, 0.34);
+        --radius-xl: 32px;
+        --radius-lg: 24px;
+        --radius-md: 18px;
+        --max: 1180px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Nunito", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(112, 49, 146, 0.26), transparent 28%),
+          radial-gradient(circle at top right, rgba(120, 221, 9, 0.14), transparent 30%),
+          linear-gradient(180deg, #0d0f1f 0%, #12152a 42%, #101323 100%);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .container {
+        width: min(calc(100% - 2rem), var(--max));
+        margin: 0 auto;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.55rem 0.95rem;
+        border: 1px solid rgba(255, 122, 89, 0.2);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.8);
+        color: var(--brand-deep);
+        font-size: 0.95rem;
+        font-weight: 800;
+        letter-spacing: 0.01em;
+      }
+
+      .section-title {
+        margin: 0;
+        font-family: "Fredoka", sans-serif;
+        font-size: clamp(2.2rem, 4vw, 4rem);
+        line-height: 0.95;
+        letter-spacing: 0.01em;
+      }
+
+      .section-copy {
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.75;
+      }
+
+      .button-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 3.25rem;
+        padding: 0.9rem 1.35rem;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-weight: 800;
+        letter-spacing: 0.01em;
+        transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+      }
+
+      .button.primary {
+        background: linear-gradient(135deg, var(--brand) 0%, #ff9167 100%);
+        color: white;
+        box-shadow: 0 18px 36px rgba(255, 122, 89, 0.28);
+      }
+
+      .button.secondary {
+        border-color: var(--line);
+        background: rgba(23, 26, 49, 0.82);
+        color: var(--ink);
+      }
+
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(12px);
+      }
+
+      @media (max-width: 720px) {
+        .container {
+          width: min(calc(100% - 1.25rem), var(--max));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
