@@ -1,4 +1,3 @@
----
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
@@ -25,10 +24,10 @@ const plans = [
 ];
 
 const heroPoints = [
-  "For kids ages 5 and up",
-  "25-minute classes that keep kids engaged.",
+  "For kids ages 5–12",
+  "25-minute classes that fit real schedules",
   "Native Spanish-speaking teachers",
-  "2 free trial classes, no commitment, cancel anytime."
+  "2 free trial classes before you commit"
 ];
 
 const approach = [
@@ -42,17 +41,42 @@ const approach = [
   },
   {
     title: "Confidence without pressure",
-    text: "Students build confidence by responding, making mistakes, and improving through meaningful context and real conversation."
+    text: "Students are encouraged to respond, make mistakes, and improve through repetition and real conversation."
   }
 ];
 
 const outcomes = [
-  "A weekly routine that makes Spanish feel natural",
-  "Real speaking practice, not just repetition.",
-  "Natural pronunciation with native-speaking teachers",
-  "Fun classes your child will look forward to each week"
+  "A weekly routine that makes Spanish feel normal",
+  "Real speaking practice instead of passive watching",
+  "Natural pronunciation from native-speaking teachers",
+  "A flexible start with no long-term commitment"
 ];
 
+const steps = [
+  {
+    label: "1. Reach out",
+    text: "Tell us your child’s age, experience level, and the days or times that usually work best."
+  },
+  {
+    label: "2. Try 2 classes free",
+    text: "Your family gets to experience the lessons before choosing a weekly plan."
+  },
+  {
+    label: "3. Choose your pace",
+    text: "Pick the schedule that fits your routine and keeps progress moving."
+  }
+];
+
+const testimonials = [
+  {
+    quote: "My child actually looks forward to class. The short format works so much better for our week.",
+    byline: "Parent of a 7-year-old student"
+  },
+  {
+    quote: "We wanted live instruction, not another app. The classes feel interactive and personal.",
+    byline: "Parent of a 9-year-old student"
+  }
+];
 ---
 
 <BaseLayout
@@ -69,7 +93,7 @@ const outcomes = [
       <div class="container hero-grid">
         <div class="hero-copy">
           <span class="pill">Live online Spanish classes for kids</span>
-          <h1>Spanish classes for kids that actually get them speaking.</h1>
+          <h1>Help your child start speaking Spanish with confidence.</h1>
           <p>
             Fluentz Kidz offers 25-minute live Spanish classes for kids ages 5–12. Lessons are
             taught by native speakers, built around real conversation, and designed to help children
@@ -93,8 +117,8 @@ const outcomes = [
 
         <div class="hero-visual card">
           <div class="hero-badge">
-            <strong>From $15 per class</strong>
-            <span>Cancel anytime.</span>
+            <strong>25 min</strong>
+            <span>Short lessons that fit real family schedules</span>
           </div>
 
           <div class="hero-photo-wrap">
@@ -114,7 +138,7 @@ const outcomes = [
 
           <div class="hero-note hero-note-bottom">
             <strong>2 free trial classes</strong>
-            <span>No commitment, cancel anytime.</span>
+            <span>Make sure it feels like the right fit before choosing a plan.</span>
           </div>
         </div>
       </div>
@@ -129,11 +153,13 @@ const outcomes = [
 
         <div class="section-copy">
           <p>
-            Children learn best when they are participating, not memorizing. Fluentz Kidz uses
-            engaging teachers, interactive lessons and real communications to help Spanish feel
-            clear, approachable, and useful. Whether your child is just starting or already knows
-            some Spanish, the goal is the same: help them understand more, respond more easily,
-            and grow more confident each week.
+            Children learn best when they are participating, not just watching. Fluentz Kidz uses
+            short live lessons, guided repetition, and real interaction to help Spanish feel clear,
+            approachable, and useful.
+          </p>
+          <p>
+            Whether your child is just starting or already knows some Spanish, the goal is the same:
+            help them understand more, respond more easily, and grow more confident each week.
           </p>
         </div>
       </div>
@@ -150,20 +176,43 @@ const outcomes = [
 
     <section class="outcomes-section">
       <div class="container outcomes-grid">
-        <div class="card outcomes-photo-card">
-          <img src="/fluentzmax.jpg" alt="Child smiling during a Fluentz Kidz learning session" />
+        <div>
+          <span class="pill">What parents are really getting</span>
+          <h2 class="section-title">A routine that makes Spanish part of everyday life.</h2>
         </div>
-        <div class="outcomes-copy-block">
-          <div class="outcomes-copy">
-            <span class="pill">What parents are really getting</span>
-            <h2 class="section-title">A routine that makes Spanish part of everyday life.</h2>
-          </div>
+
+        <div class="outcomes-stack">
           <div class="card outcomes-card">
             <ul>
               {outcomes.map((item) => <li>{item}</li>)}
             </ul>
           </div>
+          <div class="card outcomes-photo-card">
+            <img src="/fluentzmax.jpg" alt="Child smiling during a Fluentz Kidz learning session" />
+          </div>
         </div>
+      </div>
+    </section>
+
+    <section class="testimonials-section">
+      <div class="container testimonials-header">
+        <div>
+          <span class="pill">Parent perspective</span>
+          <h2 class="section-title">What families want from a language program.</h2>
+        </div>
+        <p class="section-copy">
+          Parents are usually looking for the same things: consistency, confidence, and a format
+          their child will actually stick with.
+        </p>
+      </div>
+
+      <div class="container testimonials-grid">
+        {testimonials.map((item) => (
+          <article class="card testimonial-card">
+            <p>“{item.quote}”</p>
+            <span>{item.byline}</span>
+          </article>
+        ))}
       </div>
     </section>
 
@@ -194,6 +243,24 @@ const outcomes = [
             <a class={`button ${index === 1 ? "primary" : "secondary"}`} href="/contact">
               Try 2 Classes Free
             </a>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="process-section">
+      <div class="container process-header">
+        <div>
+          <span class="pill">How it works</span>
+          <h2 class="section-title">A simple enrollment flow for busy parents.</h2>
+        </div>
+      </div>
+
+      <div class="container process-grid">
+        {steps.map((step) => (
+          <article class="card process-card">
+            <strong>{step.label}</strong>
+            <p>{step.text}</p>
           </article>
         ))}
       </div>
@@ -289,11 +356,6 @@ const outcomes = [
       box-shadow: 0 18px 36px rgba(112, 49, 146, 0.34);
     }
 
-    .hero-cta.button.primary {
-      background: #eb5f07;
-      box-shadow: none;
-    }
-
     :global(.button.secondary) {
       border-color: rgba(112, 49, 146, 0.32);
       background: rgba(24, 28, 52, 0.88);
@@ -314,7 +376,9 @@ const outcomes = [
     .hero,
     .about-section,
     .outcomes-section,
+    .testimonials-section,
     .plans-section,
+    .process-section,
     .contact-section {
       padding: 4rem 0;
       position: relative;
@@ -335,7 +399,9 @@ const outcomes = [
     .about-grid,
     .outcomes-grid,
     .plans-header,
-    .contact-grid {
+    .process-header,
+    .contact-grid,
+    .testimonials-header {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 2rem;
@@ -345,9 +411,9 @@ const outcomes = [
     .hero-copy h1 {
       margin: 1rem 0;
       font-family: "Fredoka", sans-serif;
-      font-size: clamp(2.35rem, 5.4vw, 4.1rem);
+      font-size: clamp(3rem, 7vw, 5.2rem);
       line-height: 0.92;
-      max-width: 15ch;
+      max-width: 11ch;
       color: #e6c7ff;
     }
 
@@ -360,17 +426,10 @@ const outcomes = [
     .contact-card small,
     .process-card p,
     .hero-badge span,
-    .hero-note span {
+    .hero-note span,
+    .testimonial-card span {
       color: #c0bbdb;
       line-height: 1.8;
-    }
-
-    .hero-badge span {
-      line-height: 1;
-    }
-
-    .hero-note-bottom span {
-      line-height: 1.15;
     }
 
     .button-row {
@@ -449,27 +508,15 @@ const outcomes = [
     }
 
     .hero-badge {
-      background: #097d9f;
-    }
-
-    .hero-badge {
       display: inline-flex;
       flex-direction: column;
-      gap: 0.15rem;
-      width: 11rem;
-      height: 11rem;
-      padding: 1.25rem;
-      border-radius: 999px;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      gap: 0.2rem;
+      max-width: 14rem;
+      padding: 1rem 1.1rem;
+      border-radius: 1.25rem;
       position: relative;
       z-index: 2;
       box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
-      position: absolute;
-      right: 1.5rem;
-      bottom: 1.5rem;
-      left: auto;
     }
 
     .hero-badge strong,
@@ -478,7 +525,8 @@ const outcomes = [
     .plan-card h3,
     .process-card strong,
     .price-row strong,
-    .quote p {
+    .quote p,
+    .testimonial-card p {
       color: #e6c7ff;
     }
 
@@ -489,12 +537,7 @@ const outcomes = [
     }
 
     .hero-badge strong {
-      font-size: 1.35rem;
-      line-height: 1.1;
-    }
-
-    .hero-badge strong {
-      line-height: 0.9;
+      font-size: 1.8rem;
     }
 
     .hero-photo-wrap {
@@ -530,75 +573,46 @@ const outcomes = [
     .hero-note {
       position: absolute;
       display: grid;
-      gap: 0.15rem;
-      width: 11rem;
-      height: 11rem;
-      padding: 1.25rem;
-      border-radius: 999px;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      gap: 0.3rem;
+      max-width: 14rem;
+      padding: 1rem 1.1rem;
+      border-radius: 1.25rem;
       box-shadow: 0 20px 36px rgba(0, 0, 0, 0.24);
       z-index: 2;
-    }
-
-    .hero-note-bottom {
-      background: #9330ae;
     }
 
     .hero-note strong {
       font-family: "Fredoka", sans-serif;
       font-size: 1.05rem;
-      line-height: 1.1;
-    }
-
-    .hero-note-top strong {
-      line-height: 0.95;
     }
 
     .hero-note-top {
       top: 1.5rem;
       right: 1.5rem;
-      background: #c41d8c;
-    }
-
-    .hero-note-top {
-      gap: 0.05rem;
-    }
-
-    .hero-note-top strong {
-      line-height: 0.85;
-      margin: 0;
-    }
-
-    .hero-note-top span {
-      line-height: 1.05;
     }
 
     .hero-note-bottom {
-      left: 1.5rem;
+      right: 1.5rem;
       bottom: 1.5rem;
-      right: auto;
     }
 
     .approach-grid,
-    .plans-grid {
+    .plans-grid,
+    .process-grid,
+    .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1.25rem;
       margin-top: 2rem;
     }
 
-    .outcomes-copy-block {
-      display: grid;
-      gap: 1rem;
-      align-content: start;
+    .testimonials-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .outcomes-copy {
+    .outcomes-stack {
       display: grid;
-      gap: 0.8rem;
-      align-content: center;
+      gap: 1rem;
     }
 
     .approach-card,
@@ -607,20 +621,21 @@ const outcomes = [
     .plan-card,
     .process-card,
     .quote,
-    .contact-card {
+    .contact-card,
+    .testimonial-card {
       padding: 1.5rem;
     }
 
     .approach-card:nth-child(1) {
-      background: #9330ae;
+      background: linear-gradient(180deg, rgba(112, 49, 146, 0.2), rgba(20, 23, 42, 0.9));
     }
 
     .approach-card:nth-child(2) {
-      background: #eb5f07;
+      background: linear-gradient(180deg, rgba(120, 221, 9, 0.16), rgba(20, 23, 42, 0.9));
     }
 
     .approach-card:nth-child(3) {
-      background: #097d9f;
+      background: linear-gradient(180deg, rgba(252, 146, 8, 0.18), rgba(20, 23, 42, 0.9));
     }
 
     .outcomes-card ul {
@@ -640,6 +655,13 @@ const outcomes = [
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+
+    .testimonial-card p {
+      margin: 0 0 0.75rem;
+      font-family: "Fredoka", sans-serif;
+      font-size: 1.4rem;
+      line-height: 1.25;
     }
 
     .plan-card {
@@ -743,11 +765,10 @@ const outcomes = [
       .plans-header,
       .contact-grid,
       .approach-grid,
-      .plans-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .outcomes-intro {
+      .process-grid,
+      .plans-grid,
+      .testimonials-grid,
+      .testimonials-header {
         grid-template-columns: 1fr;
       }
 
@@ -786,9 +807,8 @@ const outcomes = [
 
       .hero-badge,
       .hero-note {
-        width: 9rem;
-        height: 9rem;
-        padding: 1rem;
+        max-width: 12rem;
+        padding: 0.85rem 0.95rem;
       }
 
       .hero-photo-wrap {
@@ -805,55 +825,6 @@ const outcomes = [
         width: 3.1rem;
         top: -1.25rem;
         right: -0.15rem;
-      }
-    }
-
-    .hero-badge,
-    .hero-note {
-      width: 10rem !important;
-      height: 10rem !important;
-      max-width: none !important;
-      border-radius: 999px !important;
-      align-items: center !important;
-      justify-content: center !important;
-      text-align: center !important;
-    }
-
-    .hero-note-top {
-      width: 11.5rem !important;
-      height: 11.5rem !important;
-    }
-
-    .hero-badge {
-      width: 8.5rem !important;
-      height: 8.5rem !important;
-    }
-
-    .hero-note-bottom {
-      width: 10rem !important;
-      height: 10rem !important;
-    }
-
-    @media (max-width: 720px) {
-      .hero-badge,
-      .hero-note {
-        width: 8.25rem !important;
-        height: 8.25rem !important;
-      }
-
-      .hero-note-top {
-        width: 9.5rem !important;
-        height: 9.5rem !important;
-      }
-
-      .hero-badge {
-        width: 7.25rem !important;
-        height: 7.25rem !important;
-      }
-
-      .hero-note-bottom {
-        width: 8.25rem !important;
-        height: 8.25rem !important;
       }
     }
   </style>
