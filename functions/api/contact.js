@@ -31,7 +31,7 @@ export async function onRequestPost(context) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        from: "Fluentz Kidz <onboarding@resend.dev>",
+        from: "Fluentz Kidz <info@fluentzkidz.com>",
         to: [context.env.CONTACT_TO_EMAIL],
         reply_to: email,
         subject: `New Fluentz Kidz inquiry from ${name}`,
